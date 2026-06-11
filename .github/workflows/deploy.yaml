@@ -1,0 +1,23 @@
+name: Deploy SQL Objects
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy Stored Procedure
+        run: |
+          sqlcmd \
+          -S localhost,1433 \
+          -U sa \
+          -P "${{ secrets.SQL_PASSWORD }}" \
+          -C \
+          -i database/storedprocedure/testsp.sql
