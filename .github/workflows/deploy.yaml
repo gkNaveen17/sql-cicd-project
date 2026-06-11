@@ -12,6 +12,12 @@ jobs:
     steps:
       - name: Scan Secrets
         uses: gitleaks/gitleaks-action@v2
+
+      - name: SQL Lint
+        run: sqlfluff lint database/
+
+      - name: Trivy Scan
+        uses: aquasecurity/trivy-action@master
         
       - name: Checkout Repository
         uses: actions/checkout@v4
