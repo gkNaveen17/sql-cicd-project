@@ -19,5 +19,6 @@ jobs:
           -S localhost,1433 \
           -U sa \
           -P "${{ secrets.SQL_PASSWORD }}" \
+          -N disable \
           -C \
           -i database/storedprocedure/testsp.sql
