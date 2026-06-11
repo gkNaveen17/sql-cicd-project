@@ -10,6 +10,9 @@ jobs:
     runs-on: self-hosted
 
     steps:
+      - name: Scan Secrets
+        uses: gitleaks/gitleaks-action@v2
+        
       - name: Checkout Repository
         uses: actions/checkout@v4
 
